@@ -9,7 +9,7 @@ from xgboost import XGBRegressor
 
 # convert into categorical
 def convert_categorical_data(data):
-    with open('./Resources/category_info.pkl', 'rb') as file:
+    with open('Resources/category_info.pkl', 'rb') as file:
         category_mapping = pickle.load(file)
 
     categorical_columns = ['brand', 'model', 'cpu', 'OS', 'special_features', 'graphics', 'graphics_coprocessor']
@@ -26,10 +26,10 @@ def convert_categorical_data(data):
 def normalize_data(data, type="predictPrice"):
 
     if type == "predictPrice":
-        with open('./Resources/standardScaler.pkl', 'rb') as file:
+        with open('Resources/standardScaler.pkl', 'rb') as file:
             scaler = pickle.load(file)
     elif type == 'similarLaptops':
-        with open('./Resources/knnStandardScaler.pkl', 'rb') as file:
+        with open('Resources/knnStandardScaler.pkl', 'rb') as file:
             scaler = pickle.load(file)
     else:
         return
@@ -39,7 +39,7 @@ def normalize_data(data, type="predictPrice"):
 
 
 def getTrainingData():
-    training_data = pd.read_csv('./Resources/amazon_laptop_prices_v02_cleaned.csv')
+    training_data = pd.read_csv('Resources/amazon_laptop_prices_v02_cleaned.csv')
     ordered_columns = ['brand', 'model', 'screen_size', 'cpu', 'ram', 'OS', 'special_features', 'graphics',
                        'graphics_coprocessor', 'harddisk_numeric', 'price']
 
@@ -64,7 +64,7 @@ def predict_price(data):
     laptop_config_df = normalize_data(laptop_config_df, type="predictPrice")
 
     # load model
-    with open('./Resources/xgboostModel.pkl', 'rb') as xgboostModel:
+    with open('Resources/xgboostModel.pkl', 'rb') as xgboostModel:
         xgboostModel = pickle.load(xgboostModel)
 
     predicted_price = xgboostModel.predict(laptop_config_df)
@@ -79,7 +79,7 @@ def predict_price(data):
 
 
 def getSimilarProducts(data, n=3):
-    with open('./Resources/knnModel.pkl', 'rb') as knnModel:
+    with open('Resources/knnModel.pkl', 'rb') as knnModel:
         knnModel = pickle.load(knnModel)
 
     laptop_config_df = pd.DataFrame(data, index=[0])
