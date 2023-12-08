@@ -24,7 +24,7 @@ def predict_price():
         return jsonify({"error": "Invalid data format"}), 400
 
 
-@app.route("/api/get_brand_and_price_chart", methods = ['GET'])
+@app.route("/api/get_brand_and_price_chart", methods=['GET'])
 def get_brand_and_price_chart():
     data = MLLib.get_brand_price_chart_data()
     chart_data = []
