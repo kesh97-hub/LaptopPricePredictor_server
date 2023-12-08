@@ -67,7 +67,7 @@ def predict_price(data):
         xgboostModel = pickle.load(xgboostModel)
 
     predicted_price = xgboostModel.predict(laptop_config_df)
-    print(f'Predicted price: {predicted_price.tolist()[0]}')
+    # print(f'Predicted price: {predicted_price.tolist()[0]}')
     laptop_config['price'] = predicted_price.tolist()[0]
 
     similar_laptops = getSimilarProducts(laptop_config, 3)
@@ -102,5 +102,4 @@ def get_brand_price_chart_data():
 
     result = training_data.groupby('brand')['price'].mean()
 
-    print(result)
     return result.to_dict()
