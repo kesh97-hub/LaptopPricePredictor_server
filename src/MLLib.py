@@ -91,7 +91,7 @@ def predict_price(data):
     laptop_config['price'] = predicted_price.tolist()[0]
 
     # get similar laptops
-    similar_laptops = getSimilarProducts(laptop_config, 3)
+    similar_laptops = getSimilarProducts(laptop_config)
 
     similar_laptops.append(laptop_config)
 
