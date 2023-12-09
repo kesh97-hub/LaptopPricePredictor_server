@@ -13,6 +13,11 @@ def home():
 
 @app.route("/api/predict_price", methods=['POST'])
 def predict_price():
+    '''
+        Takes the laptop configuration
+    :return:
+        Returns a list of 3 similar laptop configurations and the input laptop configuration with predicted price
+    '''
     if request.is_json:
         data = request.get_json()['formdata']
         print(data)
@@ -26,6 +31,10 @@ def predict_price():
 
 @app.route("/api/get_brand_and_price_chart", methods=['GET'])
 def get_brand_and_price_chart():
+    '''
+    :return:
+        Returns a list of laptop manufacturers with their average laptop price
+    '''
     data = MLLib.get_brand_price_chart_data()
     chart_data = []
     i = 0
