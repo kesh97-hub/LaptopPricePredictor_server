@@ -1,6 +1,8 @@
 # LaptopPricePredictor_server
 Backend for Laptop Price Predictor App
 
+Frontend can be found at https://github.com/kesh97-hub/LaptopPricePredictor_UI
+
 To run this application, please follow the steps given below.
 
 For Windows Users:
@@ -16,3 +18,5 @@ For Mac Users:
 3. Activate the virtual environment by "source venv/bin/activate"
 4. Run "pip install -r requirements.txt"
 5. Run the main.py file using "python3 main.py"
+
+---------------------------
